@@ -375,7 +375,7 @@
       var group = catGroups[g];
       var expanded = group.isPriority ? ' expanded' : '';
 
-      h += '<div class="feature-category' + expanded + '" data-category="' + group.category.id + '">';
+      h += '<div class="feature-category' + expanded + '" data-category="' + group.category.id + '" style="background:#f9fafb;border-radius:8px;padding:0.5rem 1rem;margin-bottom:0.75rem;">';
 
       // Category header (expand/collapse trigger)
       h += '<button class="feature-category-header" data-action="toggle-category" data-category="' +
@@ -389,13 +389,13 @@
       h += '</button>';
 
       // Category body — feature rows
-      h += '<div class="feature-category-body" style="padding:0 0.5rem;">';
+      h += '<div class="feature-category-body" style="padding:0.5rem 0.75rem;">';
 
       for (var f = 0; f < group.features.length; f++) {
         var feat = group.features[f];
         var status = state.featureStatuses[feat.id] || 'heard-of'; // default to heard-of
 
-        h += '<div class="feature-row" data-feature="' + feat.id + '" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border-bottom:1px solid #f3f4f6;">';
+        h += '<div class="feature-row" data-feature="' + feat.id + '" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1.5rem;border-bottom:1px solid #f3f4f6;">';
 
         // Feature info
         h += '<div class="feature-row-info" style="text-align:left;">';
@@ -456,7 +456,7 @@
     var h = '';
 
     // Combined summary with donut chart — compact layout
-    h += '<div class="results-summary" style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;">';
+    h += '<div class="results-summary" style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;padding:2rem;">';
     h += '<div style="flex-shrink:0;">';
     h += renderDonutChart(results.percentage);
     h += '</div>';
@@ -510,7 +510,7 @@
       h += '</div>';
 
       // Feature details — collapsed by default, click category to expand
-      h += '<div class="category-features-toggle" style="text-align:left;margin-top:0.5rem;">';
+      h += '<div class="category-features-toggle" style="text-align:left;margin-top:0.5rem;padding:0 0.5rem;">';
       h += '<button data-action="toggle-category-results" data-category="' + cat.id + '" class="feature-expand-trigger" aria-expanded="false">';
       h += 'Show ' + cat.total + ' features <span class="feature-expand-trigger-icon">&#9660;</span>';
       h += '</button>';
@@ -522,7 +522,7 @@
         var feat = cat.features[f];
         var tierValue = feat.tiers ? feat.tiers[tierId] : 'included';
 
-        h += '<div class="feature-card" data-feature="' + feat.id + '" style="text-align:left;padding:0.75rem 1rem;border-bottom:1px solid #f3f4f6;">';
+        h += '<div class="feature-card" data-feature="' + feat.id + '" style="text-align:left;padding:0.75rem 1.5rem;border-bottom:1px solid #f3f4f6;">';
         h += '<div class="feature-card-top" style="display:flex;justify-content:space-between;align-items:flex-start;">';
 
         // Left side: name + description
@@ -571,7 +571,7 @@
 
       // Micro-CTA for this category
       if (cat.ctaText) {
-        h += '<div class="category-cta" style="text-align:left;padding:0.75rem 1rem;border-top:1px solid #e5e7eb;margin-top:0.5rem;">';
+        h += '<div class="category-cta" style="text-align:left;padding:0.75rem 1.5rem;border-top:1px solid #e5e7eb;margin-top:0.5rem;">';
         h += '<div class="category-cta-text" style="text-align:left;font-size:0.875rem;color:#374151;">' + cat.ctaText + '</div>';
         h += '<a href="' + (cat.ctaLink || 'https://frontrow.technology/contact') +
           '" class="category-cta-link" data-action="cta-link" data-url="' +
