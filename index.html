@@ -12,18 +12,7 @@
 </head>
 <body>
 
-  <main id="calculator-app" class="calculator">
-
-    <div id="steps-container"></div>
-
-  </main>
-
-  <footer style="text-align:center;padding:1rem;font-size:0.75rem;color:#9ca3af;">
-    <p class="disclaimer">Prices current as of March 2026, ex-GST. Verify with Microsoft for the latest pricing.</p>
-    <p style="margin-top:0.5rem;">
-      <a href="https://frontrow.technology" target="_blank" rel="noopener" style="color:#9ca3af;text-decoration:none;">Powered by Frontrow Technology</a>
-    </p>
-  </footer>
+  <div id="calculator" class="calculator"></div>
 
   <noscript>
     <div style="max-width:600px;margin:2rem auto;padding:1.5rem;text-align:center;font-family:sans-serif;color:#374151;">
@@ -35,12 +24,6 @@
   <script src="js/data.js"></script>
   <script src="js/calculator.js"></script>
   <script src="js/ui.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      M365Calculator.init();
-      M365UI.init();
-    });
-  </script>
 
 </body>
 </html>
