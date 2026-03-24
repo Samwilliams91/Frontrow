@@ -120,13 +120,11 @@
   // ---------------------------------------------------------------
 
   function renderNav(step, nextDisabled) {
-    var parts = ['<div class="step-nav">'];
+    var parts = ['<div style="display:flex;justify-content:center;gap:1rem;padding-top:1.5rem;margin-top:1rem;border-top:1px solid #e5e7eb;">'];
 
     if (step > 1) {
       parts.push('<button class="btn-back" data-action="back" aria-label="Go back">' +
         '&#8592; Back</button>');
-    } else {
-      parts.push('<span></span>'); // spacer
     }
 
     var disabledAttr = nextDisabled ? ' disabled' : '';
@@ -158,9 +156,9 @@
     h += '<p class="subtitle">Most businesses use about 20% of what they\'re paying for. Let\'s find out what you\'re missing.</p>';
     h += '</div>';
 
-    h += '<div class="step-content">';
-    h += '<h2>How many people in your organisation?</h2>';
-    h += '<div class="size-grid">';
+    h += '<div class="step-content" style="text-align:center;">';
+    h += '<h2 style="text-align:center;">How many people in your organisation?</h2>';
+    h += '<div class="size-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;justify-items:center;">';
 
     for (var i = 0; i < sizes.length; i++) {
       var sz = sizes[i];
@@ -262,7 +260,8 @@
   /** Render a single licence card */
   function renderLicenceCard(tier, selectedTier) {
     var selected = selectedTier === tier.id ? ' selected' : '';
-    var priceText = tier.price ? ('~$' + tier.price.toFixed(2) + '/user/mo') : '';
+    var p = tier.priceAUD || tier.price || 0;
+    var priceText = p ? ('~$' + p.toFixed(2) + '/user/mo') : '';
 
     var h = '<div class="licence-card' + selected + '" data-action="select-tier" data-value="' +
       tier.id + '" role="radio" aria-checked="' + (selected ? 'true' : 'false') + '" tabindex="0">';
@@ -652,13 +651,13 @@
     // Centre text
     svg += '<text x="' + (size / 2) + '" y="' + (size / 2 - 8) + '" ' +
       'text-anchor="middle" dominant-baseline="central" ' +
-      'font-family="var(--font-heading)" font-size="3rem" font-weight="700" fill="var(--color-navy)">';
+      'font-family="var(--font-heading)" font-size="3rem" font-weight="700" fill="#ffffff">';
     svg += displayPct + '%';
     svg += '</text>';
 
     svg += '<text x="' + (size / 2) + '" y="' + (size / 2 + 24) + '" ' +
       'text-anchor="middle" dominant-baseline="central" ' +
-      'font-family="var(--font-body)" font-size="0.8rem" fill="var(--color-grey-500)">';
+      'font-family="var(--font-body)" font-size="0.8rem" fill="rgba(255,255,255,0.7)">';
     svg += 'utilisation';
     svg += '</text>';
 
@@ -695,8 +694,8 @@
     else if (step === 4) content = renderStep4();
     else if (step === 5) content = renderResults();
 
-    // Wrap in a step div — include active class immediately so content is visible
-    var wrapper = '<div class="step active">' + content + '</div>';
+    // Wrap in a step div — include active class immediately, force centre everything
+    var wrapper = '<div class="step active" style="display:block;text-align:center;">' + content + '</div>';
     container.innerHTML = wrapper;
 
     currentStep = step;
