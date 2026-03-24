@@ -460,11 +460,13 @@
 
     var h = '';
 
-    // Summary card
-    h += '<div class="results-summary">';
-    h += '<div class="results-percentage">' + results.percentage + '%</div>';
-    h += '<div class="results-percentage-label">Utilisation</div>';
-    h += '<p class="results-summary-text">';
+    // Combined summary with donut chart — compact layout
+    h += '<div class="results-summary" style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;">';
+    h += '<div style="flex-shrink:0;">';
+    h += renderDonutChart(results.percentage);
+    h += '</div>';
+    h += '<div style="text-align:left;max-width:400px;">';
+    h += '<p class="results-summary-text" style="margin:0;">';
     h += 'You have access to <strong>' + results.total + ' features</strong> with ' + tierName + '. ';
     h += 'You\'re using <strong>' + results.using + '</strong>. ';
 
@@ -477,18 +479,8 @@
     }
 
     h += '</p>';
+    h += '</div>';
     h += '</div>'; // .results-summary
-
-    // Donut chart
-    h += '<div class="chart-container">';
-    h += '<div>';
-    h += renderDonutChart(results.percentage);
-    h += '<div class="chart-legend">';
-    h += '<div class="chart-legend-item"><span class="chart-legend-dot" style="background-color:var(--color-accent)"></span> Using</div>';
-    h += '<div class="chart-legend-item"><span class="chart-legend-dot" style="background-color:var(--color-grey-200)"></span> Untapped</div>';
-    h += '</div>';
-    h += '</div>';
-    h += '</div>'; // .chart-container
 
     // Category breakdowns
     h += '<div class="category-breakdown">';
@@ -521,6 +513,14 @@
       h += '<div class="' + barClass + '" style="width:' + cat.percentage + '%" role="progressbar" aria-valuenow="' +
         cat.percentage + '" aria-valuemin="0" aria-valuemax="100"></div>';
       h += '</div>';
+
+      // Feature details — collapsed by default, click category to expand
+      h += '<div class="category-features-toggle">';
+      h += '<button data-action="toggle-category-results" data-category="' + cat.id + '" class="feature-expand-trigger" aria-expanded="false">';
+      h += 'Show ' + cat.total + ' features <span class="feature-expand-trigger-icon">&#9660;</span>';
+      h += '</button>';
+      h += '</div>';
+      h += '<div class="category-features-body" id="cat-results-' + cat.id + '" style="display:none;">';
 
       // Feature cards within this category
       for (var f = 0; f < cat.features.length; f++) {
@@ -584,6 +584,7 @@
         h += '</div>';
       }
 
+      h += '</div>'; // .category-features-body
       h += '</div>'; // .category-card
     }
 
@@ -702,14 +703,9 @@
     else if (step === 4) content = renderStep4();
     else if (step === 5) content = renderResults();
 
-    // Wrap in a step div with animation classes
-    var wrapper = '<div class="step ' + slideClass + '">' + content + '</div>';
+    // Wrap in a step div — include active class immediately so content is visible
+    var wrapper = '<div class="step active">' + content + '</div>';
     container.innerHTML = wrapper;
-
-    // Force reflow then activate the transition
-    var stepEl = container.querySelector('.step');
-    /* jshint -W030 */ stepEl.offsetHeight; /* jshint +W030 */ // force reflow
-    stepEl.classList.add('active');
 
     currentStep = step;
 
@@ -851,6 +847,22 @@
           if (trigEl) {
             trigEl.classList.toggle('open');
             trigEl.setAttribute('aria-expanded', body.classList.contains('visible') ? 'true' : 'false');
+          }
+          setTimeout(postHeight, 50);
+        }
+        break;
+
+      // -- Results: Toggle category features in results --
+      case 'toggle-category-results':
+        var catId = target.getAttribute('data-category');
+        var catBody = document.getElementById('cat-results-' + catId);
+        if (catBody) {
+          var isVisible = catBody.style.display !== 'none';
+          catBody.style.display = isVisible ? 'none' : 'block';
+          var trigBtn = target.closest ? target.closest('button') : target;
+          if (trigBtn) {
+            trigBtn.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
+            trigBtn.innerHTML = (isVisible ? 'Show ' : 'Hide ') + catBody.querySelectorAll('.feature-card').length + ' features <span class="feature-expand-trigger-icon">' + (isVisible ? '&#9660;' : '&#9650;') + '</span>';
           }
           setTimeout(postHeight, 50);
         }
