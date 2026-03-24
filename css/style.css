@@ -1174,12 +1174,26 @@ p {
 }
 
 /* Force centre everything in all steps */
-.step h1, .step h2, .step h3, .step p {
-  text-align: center;
+.step h1, .step h2, .step h3, .step p,
+.calculator h1, .calculator h2, .calculator h3, .calculator p,
+.step-content h1, .step-content h2, .step-content h3, .step-content p {
+  text-align: center !important;
 }
 
 .size-grid, .tier-grid, .priority-grid {
   justify-content: center;
+}
+
+.step-nav {
+  justify-content: center !important;
+}
+
+.cta-block {
+  text-align: center !important;
+}
+
+.cta-buttons {
+  justify-content: center !important;
 }
 
 .step-nav .btn {

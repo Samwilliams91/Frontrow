@@ -59,17 +59,9 @@
     } catch (e) { /* cross-origin — ignore */ }
   }
 
-  /** Open a URL — in iframe use postMessage, otherwise normal nav */
+  /** Open a URL — always open in new tab (works in iframe and standalone) */
   function openLink(url) {
-    if (isInIframe()) {
-      try {
-        window.parent.postMessage({ type: 'm365-calculator-link', url: url }, '*');
-      } catch (e) {
-        window.open(url, '_blank');
-      }
-    } else {
-      window.open(url, '_blank');
-    }
+    window.open(url, '_blank');
   }
 
   /** Get the main calculator container */
@@ -465,7 +457,7 @@
     h += '<div style="flex-shrink:0;">';
     h += renderDonutChart(results.percentage);
     h += '</div>';
-    h += '<div style="text-align:left;max-width:400px;">';
+    h += '<div style="text-align:center;max-width:400px;">';
     h += '<p class="results-summary-text" style="margin:0;">';
     h += 'You have access to <strong>' + results.total + ' features</strong> with ' + tierName + '. ';
     h += 'You\'re using <strong>' + results.using + '</strong>. ';
