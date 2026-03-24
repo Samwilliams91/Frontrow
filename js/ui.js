@@ -155,8 +155,8 @@
 
     var h = '';
     h += renderProgress(1);
-    h += '<div class="calculator-header">';
-    h += '<h1>What\'s Hiding in Your Microsoft 365 Licence?</h1>';
+    h += '<div style="text-align:center;margin-bottom:1.5rem;">';
+    h += '<h1 style="text-align:center;">What\'s Hiding in Your Microsoft 365 Licence?</h1>';
     h += '<p class="subtitle" style="text-align:center;max-width:600px;margin:0 auto;">Most businesses use about 20% of what they\'re paying for. Let\'s find out what you\'re missing.</p>';
     h += '</div>';
 
@@ -205,12 +205,12 @@
 
     var h = '';
     h += renderProgress(2);
-    h += '<div class="calculator-header">';
-    h += '<h1>Which Microsoft 365 plan are you on?</h1>';
-    h += '<p class="subtitle">Pick the plan that best matches yours. Not sure? No worries — just pick your best guess.</p>';
+    h += '<div style="text-align:center;margin-bottom:1.5rem;">';
+    h += '<h1 style="text-align:center;">Which Microsoft 365 plan are you on?</h1>';
+    h += '<p style="text-align:center;max-width:600px;margin:0 auto;">Pick the plan that best matches yours. Not sure? No worries — just pick your best guess.</p>';
     h += '</div>';
 
-    h += '<div class="step-content">';
+    h += '<div style="text-align:center;">';
     h += '<div class="licence-cards" role="radiogroup" aria-label="Select your Microsoft 365 plan">';
 
     // Render main tier cards
@@ -290,12 +290,12 @@
 
     var h = '';
     h += renderProgress(3);
-    h += '<div class="calculator-header">';
-    h += '<h1>What matters most to your business right now?</h1>';
-    h += '<p class="subtitle">Pick as many as you like — we\'ll focus on these areas first in your results.</p>';
+    h += '<div style="text-align:center;margin-bottom:1.5rem;">';
+    h += '<h1 style="text-align:center;">What matters most to your business right now?</h1>';
+    h += '<p style="text-align:center;max-width:600px;margin:0 auto;">Pick as many as you like — we\'ll focus on these areas first in your results.</p>';
     h += '</div>';
 
-    h += '<div class="step-content">';
+    h += '<div style="text-align:center;">';
     h += '<div class="priority-pills" role="group" aria-label="Select your priorities">';
 
     for (var i = 0; i < categories.length; i++) {
@@ -313,7 +313,7 @@
 
     h += '</div>'; // .priority-pills
 
-    h += '<p class="priority-hint">Select at least one to continue</p>';
+    h += '<p style="text-align:center;margin-top:1rem;color:#6b7280;font-size:0.875rem;">Select at least one to continue</p>';
     h += '</div>'; // .step-content
 
     h += renderNav(3, state.priorities.length === 0);
@@ -357,12 +357,12 @@
 
     var h = '';
     h += renderProgress(4);
-    h += '<div class="calculator-header">';
-    h += '<h1>Let\'s see what you know</h1>';
-    h += '<p class="subtitle">For each feature, tell us whether you\'re already using it, have heard of it, or have never come across it.</p>';
+    h += '<div style="text-align:center;margin-bottom:1.5rem;">';
+    h += '<h1 style="text-align:center;">Let\'s see what you know</h1>';
+    h += '<p style="text-align:center;max-width:600px;margin:0 auto;">For each feature, tell us whether you\'re already using it, have heard of it, or have never come across it.</p>';
     h += '</div>';
 
-    h += '<div class="step-content">';
+    h += '<div style="text-align:center;">';
 
     // Feature check header
     h += '<div class="feature-check-header">';
@@ -479,7 +479,7 @@
 
     // Category breakdowns
     h += '<div class="category-breakdown">';
-    h += '<h2>Breakdown by Category</h2>';
+    h += '<h2 style="text-align:center;">Breakdown by Category</h2>';
 
     for (var c = 0; c < results.categories.length; c++) {
       var cat = results.categories[c];
@@ -586,21 +586,21 @@
     h += '</div>'; // .category-breakdown
 
     // Final CTA block
-    h += '<div class="cta-block">';
-    h += '<h2>Ready to get more from what you\'re paying for?</h2>';
-    h += '<p>We help Australian businesses actually use what\'s in their Microsoft 365 licence. No upsell, just setup.</p>';
-    h += '<div class="cta-buttons">';
-    h += '<a href="https://frontrow.technology/contact" class="btn btn-primary" data-action="cta-link" data-url="https://frontrow.technology/contact">';
+    h += '<div style="text-align:center;padding:2rem 0;">';
+    h += '<h2 style="text-align:center;">Ready to get more from what you\'re paying for?</h2>';
+    h += '<p style="text-align:center;max-width:500px;margin:0 auto 1.5rem;">We help Australian businesses actually use what\'s in their Microsoft 365 licence. No upsell, just setup.</p>';
+    h += '<div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">';
+    h += '<a href="https://frontrow.technology/contact" class="btn btn-primary" data-action="cta-link" data-url="https://frontrow.technology/contact" target="_blank">';
     h += 'Book a Free 30-Minute Assessment';
     h += '</a>';
     h += '<button class="btn btn-secondary" data-action="restart">';
     h += 'Start Again';
     h += '</button>';
     h += '</div>';
-    h += '</div>'; // .cta-block
+    h += '</div>';
 
     // Disclaimer
-    h += '<p class="disclaimer text-center">Prices current as of March 2026, ex-GST. Feature availability may vary. ' +
+    h += '<p style="text-align:center;font-size:0.75rem;color:#9ca3af;margin-top:2rem;">Prices current as of March 2026, ex-GST. Feature availability may vary. ' +
       'Check <a href="https://www.microsoft.com/en-au/microsoft-365/business/compare-all-plans" target="_blank" rel="noopener">Microsoft\'s site</a> for the latest.</p>';
 
     return h;
