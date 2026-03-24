@@ -395,12 +395,12 @@
         var feat = group.features[f];
         var status = state.featureStatuses[feat.id] || 'heard-of'; // default to heard-of
 
-        h += '<div class="feature-row" data-feature="' + feat.id + '">';
+        h += '<div class="feature-row" data-feature="' + feat.id + '" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid #f3f4f6;">';
 
         // Feature info
-        h += '<div class="feature-row-info">';
-        h += '<div class="feature-row-name">' + feat.name + '</div>';
-        h += '<div class="feature-row-description">' + (feat.friendlyName || '') + '</div>';
+        h += '<div class="feature-row-info" style="text-align:left;">';
+        h += '<div class="feature-row-name" style="text-align:left;font-weight:600;">' + feat.name + '</div>';
+        h += '<div class="feature-row-description" style="text-align:left;font-size:0.85rem;color:#6b7280;">' + (feat.friendlyName || '') + '</div>';
         h += '</div>';
 
         // 3-state toggle buttons
@@ -484,11 +484,11 @@
     for (var c = 0; c < results.categories.length; c++) {
       var cat = results.categories[c];
 
-      h += '<div class="category-card" data-category="' + cat.id + '">';
+      h += '<div class="category-card" data-category="' + cat.id + '" style="text-align:left;background:#f9fafb;border-radius:8px;padding:1rem;margin-bottom:0.75rem;">';
 
       // Header
-      h += '<div class="category-card-header">';
-      h += '<div class="category-card-name">';
+      h += '<div class="category-card-header" style="display:flex;justify-content:space-between;align-items:center;">';
+      h += '<div class="category-card-name" style="text-align:left;">';
       h += '<span>' + cat.icon + '</span>';
       h += '<span>' + cat.name + '</span>';
       if (cat.isPriority) {
@@ -522,13 +522,13 @@
         var feat = cat.features[f];
         var tierValue = feat.tiers ? feat.tiers[tierId] : 'included';
 
-        h += '<div class="feature-card" data-feature="' + feat.id + '">';
-        h += '<div class="feature-card-top">';
+        h += '<div class="feature-card" data-feature="' + feat.id + '" style="text-align:left;padding:0.75rem 0;border-bottom:1px solid #f3f4f6;">';
+        h += '<div class="feature-card-top" style="display:flex;justify-content:space-between;align-items:flex-start;">';
 
         // Left side: name + description
-        h += '<div>';
-        h += '<div class="feature-card-name">' + feat.name + '</div>';
-        h += '<div class="feature-card-description">' + (feat.friendlyName || '') + '</div>';
+        h += '<div style="text-align:left;">';
+        h += '<div class="feature-card-name" style="text-align:left;font-weight:600;">' + feat.name + '</div>';
+        h += '<div class="feature-card-description" style="text-align:left;font-size:0.85rem;color:#6b7280;">' + (feat.friendlyName || '') + '</div>';
 
         // Usage indicator
         var usageDotClass = 'usage-dot';
