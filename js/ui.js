@@ -122,15 +122,19 @@
   function renderNav(step, nextDisabled) {
     var parts = ['<div style="display:flex;justify-content:center;gap:1rem;padding-top:1.5rem;margin-top:1rem;border-top:1px solid #e5e7eb;">'];
 
+    // Always show back button — disabled on step 1
     if (step > 1) {
-      parts.push('<button class="btn-back" data-action="back" aria-label="Go back">' +
+      parts.push('<button class="btn btn-secondary btn-back" data-action="back" aria-label="Go back" style="min-width:120px;">' +
+        '&#8592; Back</button>');
+    } else {
+      parts.push('<button class="btn btn-secondary btn-back" disabled style="min-width:120px;opacity:0.3;cursor:default;">' +
         '&#8592; Back</button>');
     }
 
     var disabledAttr = nextDisabled ? ' disabled' : '';
     var label = step === 4 ? 'Show My Results' : 'Next';
     parts.push('<button class="btn btn-primary btn-next" data-action="next"' +
-      disabledAttr + '>' + label + ' &#8594;</button>');
+      disabledAttr + ' style="min-width:120px;">' + label + ' &#8594;</button>');
 
     parts.push('</div>');
     return parts.join('');
@@ -153,7 +157,7 @@
     h += renderProgress(1);
     h += '<div class="calculator-header">';
     h += '<h1>What\'s Hiding in Your Microsoft 365 Licence?</h1>';
-    h += '<p class="subtitle">Most businesses use about 20% of what they\'re paying for. Let\'s find out what you\'re missing.</p>';
+    h += '<p class="subtitle" style="text-align:center;max-width:600px;margin:0 auto;">Most businesses use about 20% of what they\'re paying for. Let\'s find out what you\'re missing.</p>';
     h += '</div>';
 
     h += '<div class="step-content" style="text-align:center;">';
