@@ -478,8 +478,8 @@
     h += '</div>'; // .results-summary
 
     // Category breakdowns
-    h += '<div class="category-breakdown">';
-    h += '<h2 style="text-align:center;">Breakdown by Category</h2>';
+    h += '<div class="category-breakdown" style="text-align:left;">';
+    h += '<h2 style="text-align:center;margin-bottom:1rem;">Breakdown by Category</h2>';
 
     for (var c = 0; c < results.categories.length; c++) {
       var cat = results.categories[c];
@@ -495,7 +495,7 @@
         h += ' <span class="badge badge-included" style="font-size:0.65rem;padding:2px 8px;">Priority</span>';
       }
       h += '</div>';
-      h += '<div class="category-card-stat">' + cat.using + ' of ' + cat.total + ' active (' + cat.percentage + '%)</div>';
+      h += '<div class="category-card-stat" style="text-align:right;font-size:0.85rem;color:#6b7280;">' + cat.using + ' of ' + cat.total + ' active (' + cat.percentage + '%)</div>';
       h += '</div>';
 
       // Progress bar
@@ -510,7 +510,7 @@
       h += '</div>';
 
       // Feature details — collapsed by default, click category to expand
-      h += '<div class="category-features-toggle">';
+      h += '<div class="category-features-toggle" style="text-align:left;margin-top:0.5rem;">';
       h += '<button data-action="toggle-category-results" data-category="' + cat.id + '" class="feature-expand-trigger" aria-expanded="false">';
       h += 'Show ' + cat.total + ' features <span class="feature-expand-trigger-icon">&#9660;</span>';
       h += '</button>';
@@ -571,8 +571,8 @@
 
       // Micro-CTA for this category
       if (cat.ctaText) {
-        h += '<div class="category-cta">';
-        h += '<div class="category-cta-text">' + cat.ctaText + '</div>';
+        h += '<div class="category-cta" style="text-align:left;padding:0.75rem 0;border-top:1px solid #e5e7eb;margin-top:0.5rem;">';
+        h += '<div class="category-cta-text" style="text-align:left;font-size:0.875rem;color:#374151;">' + cat.ctaText + '</div>';
         h += '<a href="' + (cat.ctaLink || 'https://frontrow.technology/contact') +
           '" class="category-cta-link" data-action="cta-link" data-url="' +
           (cat.ctaLink || 'https://frontrow.technology/contact') + '">Talk to us &rarr;</a>';
