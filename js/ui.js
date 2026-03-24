@@ -389,13 +389,13 @@
       h += '</button>';
 
       // Category body — feature rows
-      h += '<div class="feature-category-body">';
+      h += '<div class="feature-category-body" style="padding:0 0.5rem;">';
 
       for (var f = 0; f < group.features.length; f++) {
         var feat = group.features[f];
         var status = state.featureStatuses[feat.id] || 'heard-of'; // default to heard-of
 
-        h += '<div class="feature-row" data-feature="' + feat.id + '" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0.75rem 0;border-bottom:1px solid #f3f4f6;">';
+        h += '<div class="feature-row" data-feature="' + feat.id + '" style="text-align:left;display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border-bottom:1px solid #f3f4f6;">';
 
         // Feature info
         h += '<div class="feature-row-info" style="text-align:left;">';
@@ -484,7 +484,7 @@
     for (var c = 0; c < results.categories.length; c++) {
       var cat = results.categories[c];
 
-      h += '<div class="category-card" data-category="' + cat.id + '" style="text-align:left;background:#f9fafb;border-radius:8px;padding:1rem;margin-bottom:0.75rem;">';
+      h += '<div class="category-card" data-category="' + cat.id + '" style="text-align:left;background:#f9fafb;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:0.75rem;">';
 
       // Header
       h += '<div class="category-card-header" style="display:flex;justify-content:space-between;align-items:center;">';
@@ -522,7 +522,7 @@
         var feat = cat.features[f];
         var tierValue = feat.tiers ? feat.tiers[tierId] : 'included';
 
-        h += '<div class="feature-card" data-feature="' + feat.id + '" style="text-align:left;padding:0.75rem 0;border-bottom:1px solid #f3f4f6;">';
+        h += '<div class="feature-card" data-feature="' + feat.id + '" style="text-align:left;padding:0.75rem 1rem;border-bottom:1px solid #f3f4f6;">';
         h += '<div class="feature-card-top" style="display:flex;justify-content:space-between;align-items:flex-start;">';
 
         // Left side: name + description
@@ -571,7 +571,7 @@
 
       // Micro-CTA for this category
       if (cat.ctaText) {
-        h += '<div class="category-cta" style="text-align:left;padding:0.75rem 0;border-top:1px solid #e5e7eb;margin-top:0.5rem;">';
+        h += '<div class="category-cta" style="text-align:left;padding:0.75rem 1rem;border-top:1px solid #e5e7eb;margin-top:0.5rem;">';
         h += '<div class="category-cta-text" style="text-align:left;font-size:0.875rem;color:#374151;">' + cat.ctaText + '</div>';
         h += '<a href="' + (cat.ctaLink || 'https://frontrow.technology/contact') +
           '" class="category-cta-link" data-action="cta-link" data-url="' +
